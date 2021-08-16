@@ -1,0 +1,24 @@
+A console application that helps rangers that work in a park see information about tasks they are to perform
+and apply for such tasks.
+
+1. Ranger can log in.
+
+2. Ranger can see their personal information, such as:
+	name, email, ...
+	rank
+	number of tasks assigned, ...
+
+3. Ranger can see all unfinished tasks assigned to them - highest priority first.
+4. Ranger can see all unfinished tasks assigned to them - most recent first.
+
+5. Ranger can see all their finished tasks.
+
+6. Ranger can see all unassigned tasks - highest priority first.
+
+//TODO output format.
+
+7. Ranger can see detailed information about a certain task.
+
+8. Ranger can pick a task unless they already have 5 tasks assigned to them.
+
+9. Ranger with rank "LEAD" can mark some other ranger's tasks as "completed"

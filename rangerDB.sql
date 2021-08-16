@@ -5,6 +5,9 @@ CREATE DATABASE park;
 CREATE SCHEMA rangers;
 SET search_path='rangers';
 
+/*
+Rangers tables. Creation and filling.
+*/
 
 CREATE TABLE ranger_rank (
 	id smallserial PRIMARY KEY,
@@ -31,6 +34,21 @@ CREATE TABLE ranger_passwords (
 	password varchar NOT NULL
 );
 
+INSERT INTO ranger (first_name, last_name, email, rank) VALUES
+    ('Ivan', 'Petrov', 'evanpetrov@mail.ru', 1),
+    ('John', 'Smith', 'johnsmith@yahoo.com', 2),
+    ('Jane', 'Doe', 'janedoe@gmail.com', 3),
+    ('Cordell', 'Walker', 'cordellwalker@gmial.com', 4);
+
+INSERT INTO ranger_passwords (password) VALUES
+    ('password1'),
+    ('password2'),
+    ('password3'),
+    ('password4');
+
+/*
+Tasks tables. Creation and filling.
+*/
 
 CREATE TABLE task_type (
 	id smallserial PRIMARY KEY,
@@ -66,3 +84,5 @@ CREATE TABLE task (
 	longitude real,
 	created_at timestamp
 );
+
+

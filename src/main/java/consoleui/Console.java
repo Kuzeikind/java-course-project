@@ -1,6 +1,14 @@
 package consoleui;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.SQLException;
+
 public class Console extends BaseConsole {
+
+    public Console() throws IOException, SQLException {
+        super();
+    }
 
     /**
      * Event loop that listens for commands.
@@ -12,7 +20,7 @@ public class Console extends BaseConsole {
             try {
                 String cmd = readCmd();
                 switch (cmd) {
-                    case "login":
+                    case "login": //TODO unsuccessful login.
                         logIn();
                         break UNAUTHORIZED;
                     case "info":

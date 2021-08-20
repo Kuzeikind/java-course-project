@@ -1,6 +1,5 @@
 package service;
 
-import dao.DAOFactory;
 import dao.Ranger;
 import dao.RangerDAO;
 
@@ -15,7 +14,7 @@ public class RangerManager {
     /**
      * Returns information about ranger's tasks: [unfinished, finished].
      */
-    public int[] seeStatistics(Ranger ranger) {
+    public int[] seeInfo(Ranger ranger) {
         return null;
     };
 

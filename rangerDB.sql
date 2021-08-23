@@ -80,8 +80,8 @@ CREATE TABLE task (
 	priority smallint REFERENCES task_type(id),
 	type smallint REFERENCES task_priority(id),
 	description text,
-	latitude real,
-	longitude real,
+	latitude double precision,
+	longitude double precision,
 	created_at timestamp
 );
 

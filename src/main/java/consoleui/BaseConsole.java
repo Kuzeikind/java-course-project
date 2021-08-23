@@ -1,6 +1,6 @@
 package consoleui;
 
-import dao.Ranger;
+import dao.domain.Ranger;
 import service.Controller;
 import service.RangerManager;
 import service.TaskManager;

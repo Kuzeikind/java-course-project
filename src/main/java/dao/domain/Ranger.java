@@ -1,8 +1,8 @@
-package dao;
+package dao.domain;
 
 import dao.enums.RangerRank;
 
-public class Ranger {
+public class Ranger extends AbstractEntity {
 
     private long id;
     private String firstName;
@@ -10,6 +10,15 @@ public class Ranger {
     private String email;
     private RangerRank rank;
 
+    public Ranger(long id, String firstName, String lastName, String email, RangerRank rank) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.rank = rank;
+    }
+
+    @Override
     public long getId() {
         return id;
     }

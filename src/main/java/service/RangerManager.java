@@ -1,7 +1,7 @@
 package service;
 
-import dao.Ranger;
 import dao.RangerDAO;
+import dao.domain.Ranger;
 
 public class RangerManager {
 

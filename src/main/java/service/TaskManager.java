@@ -1,8 +1,7 @@
 package service;
 
-import dao.DAOFactory;
-import dao.Task;
 import dao.TaskDAO;
+import dao.domain.Task;
 
 public class TaskManager {
 

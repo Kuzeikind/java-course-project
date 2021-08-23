@@ -37,13 +37,13 @@ public class DAOFactory {
         );
     }
 
-    public RangerDAO getRangerDAO() {
-        RangerDAO rangerDAO = new RangerDAO(connection);
+    public RangerDaoPostgres getRangerDAO() {
+        RangerDaoPostgres rangerDAO = new RangerDaoPostgres(connection);
         return rangerDAO;
     }
 
-    public TaskDAO getTaskDAO() {
-        TaskDAO taskDAO = new TaskDAO(connection);
+    public TaskDaoPostgres getTaskDAO() {
+        TaskDaoPostgres taskDAO = new TaskDaoPostgres(connection);
         return taskDAO;
     }
 }

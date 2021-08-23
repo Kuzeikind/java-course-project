@@ -8,6 +8,8 @@ and apply for such tasks.
 	rank
 	number of tasks assigned, ...
 
+// TODO set cross-references between tables inside DTO classes.
+
 3. Ranger can see all unfinished tasks assigned to them - highest priority first.
 4. Ranger can see all unfinished tasks assigned to them - most recent first.
 

@@ -58,5 +58,16 @@ public class Ranger extends AbstractEntity {
     public void setRangerRank(RangerRank rank) {
         this.rank = rank;
     }
+
+    @Override
+    public String toString() {
+        return "Ranger{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", rank=" + rank +
+                '}';
+    }
 }
 

@@ -1,0 +1,19 @@
+General:
+    - handle exceptions with proper messages
+
+Console:
+    - implement help command
+    - prepare help message
+    - add interactive messages
+
+BaseConsole:
+    - implement tasks formatting
+
+RangerManager:
+    - logIn method in one transaction ???
+
+DAO:
+    - implement proper mapping of Enum types:
+        - return joined table ?
+        - create Enum constructors ?
+        - adjust Enum IDs in the DB ?

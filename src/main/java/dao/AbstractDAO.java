@@ -18,69 +18,65 @@ public abstract class AbstractDAO<T extends AbstractEntity> {
     private String CREATE_SQL = null;
     private String FIND_BY_ID_SQL = null;
     private String FIND_MANY_SQL = null;
-    private String UPDATE_BY_ID_SQL = null;
     private String DELETE_BY_ID_SQL = null;
 
-    protected T mapRow(ResultSet rs) {
+    protected T mapRow(ResultSet rs) throws SQLException {
         throw new RuntimeException("mapRow method not implemented");
     }
 
-    protected List<T> mapAll(ResultSet rs) {
+    protected List<T> mapAll(ResultSet rs) throws SQLException {
         List<T> out = new ArrayList<>();
 
         try {
             while (rs.next()) {
                 out.add(mapRow(rs));
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException sqe) {
+            throw new SQLException("Unable to map rows", sqe);
         }
 
         return out;
     }
 
-    public void create(T t){
+    public void create(T t) throws SQLException {
         try (PreparedStatement stmt = conn.prepareStatement(CREATE_SQL)) {
             stmt.executeUpdate();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
         }
     }
 
-    public T findById(long id) {
+    public T findById(long id) throws SQLException {
         T out = null;
 
         try (PreparedStatement stmt = conn.prepareStatement(FIND_BY_ID_SQL)) {
             stmt.setLong(1, id);
             ResultSet rs = stmt.executeQuery();
+            rs.next();
 
-             out = mapRow(rs);
+            out = mapRow(rs);
 
-        } catch (SQLException sqe) {
-            sqe.printStackTrace();
         }
 
         return out;
     }
 
-    public void updateById(T t) {
-        try (PreparedStatement stmt = conn.prepareStatement(UPDATE_BY_ID_SQL)) {
-            stmt.setLong(1, t.getId());
-            stmt.executeUpdate();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+    protected List<T> findMany(PreparedStatement stmt) throws SQLException {
+        List<T> out = new ArrayList<>();
+
+        ResultSet rs = stmt.executeQuery();
+        out = mapAll(rs);
+
+        return out;
     }
 
-    public void deleteById(T t) {
+//    public void updateById(long id, Object ... params) throws SQLException {
+//        throw new RuntimeException("Update method not implemented");
+//    }
+
+    public void deleteById(long id) throws SQLException {
         try (PreparedStatement stmt = conn.prepareStatement(DELETE_BY_ID_SQL)) {
-            stmt.setLong(1, t.getId());
+            stmt.setLong(1, id);
             stmt.executeUpdate();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
         }
     }
-
-
 
 }

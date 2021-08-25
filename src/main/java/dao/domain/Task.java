@@ -92,5 +92,19 @@ public class Task extends AbstractEntity {
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", assignedTo=" + assignedTo +
+                ", type=" + type +
+                ", priority=" + priority +
+                ", description='" + description + '\'' +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", createdAt=" + createdAt +
+                '}';
+    }
 }
 

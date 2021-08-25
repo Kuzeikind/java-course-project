@@ -28,7 +28,7 @@ public class Console extends BaseConsole {
                     case "unassigned":
                     case "finished":
                     case "take":
-                    case "mark":
+                    case "approve":
                         showUnauthorizedMsg();
                         break;
                     case "exit":
@@ -39,7 +39,8 @@ public class Console extends BaseConsole {
                         break;
                 }
             } catch(Exception e) {
-
+                System.out.println("Something went wrong. Closing the application.");
+                return;
             }
         }
 
@@ -69,8 +70,8 @@ public class Console extends BaseConsole {
                     case "take":
                         takeTask();
                         break;
-                    case "mark":
-                        markAsFinished();
+                    case "approve":
+                        approve();
                         break;
                     case "exit":
                         showGoodByeMsg();
@@ -80,7 +81,9 @@ public class Console extends BaseConsole {
                         break;
                 }
             } catch(Exception e) {
-
+                e.printStackTrace();
+                System.out.println("Something went wrong. Closing the application.");
+                return;
             }
         }
     }

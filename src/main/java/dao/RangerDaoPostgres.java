@@ -10,16 +10,15 @@ import java.sql.SQLException;
 
 public class RangerDaoPostgres extends AbstractDAO<Ranger> implements RangerDAO {
 
-    protected Connection conn;
+    RangerDaoPostgres(Connection connection){
+        super(connection);
+    }
 
     private final String FIND_BY_EMAIL_SQL = "SELECT * FROM ranger " +
             "WHERE email = ? ";
+
     private final String GET_PASSWORD_BY_ID_SQL = "SELECT password FROM ranger_passwords " +
             "WHERE id = ? ";
-
-    RangerDaoPostgres(Connection connection){
-        conn = connection;
-    }
 
     @Override
     protected Ranger mapRow(ResultSet rs) throws SQLException {

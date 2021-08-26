@@ -3,6 +3,7 @@ package dao;
 import dao.domain.Task;
 import dao.enums.TaskPriority;
 import dao.enums.TaskType;
+import exceptions.NotImplementedException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,10 +14,8 @@ import java.util.List;
 
 public class TaskDaoPostgres extends AbstractDAO<Task> implements TaskDAO {
 
-    protected Connection conn;
-
-    public TaskDaoPostgres(Connection connection) {
-        conn = connection;
+    TaskDaoPostgres(Connection connection) {
+        super(connection);
     }
 
     private final String FIND_BY_ID_SQL = "SELECT * FROM task " +
@@ -32,6 +31,18 @@ public class TaskDaoPostgres extends AbstractDAO<Task> implements TaskDAO {
             "WHERE id = ? ";
     private final String MOVE_TO_HISTORY_BY_ID_SQL = "INSERT INTO history " +
             "SELECT * FROM task WHERE id = ? ";
+    private final String DELETE_BY_ID_SQL = "DELETE FROM task " +
+            "WHERE id = ? ";
+
+    @Override
+    public String getDELETE_BY_ID_SQL() {
+        return DELETE_BY_ID_SQL;
+    }
+
+    @Override
+    public String getFIND_BY_ID_SQL() {
+        return FIND_BY_ID_SQL;
+    }
 
     @Override
     protected Task mapRow(ResultSet rs) throws SQLException {
@@ -154,9 +165,8 @@ public class TaskDaoPostgres extends AbstractDAO<Task> implements TaskDAO {
             stmt.setLong(1, taskId);
             // TODO execute int one transaction.
             stmt.executeUpdate();
-            deleteById(taskId);
-
         }
+        deleteById(taskId);
     }
 
 }

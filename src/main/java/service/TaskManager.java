@@ -50,6 +50,10 @@ public class TaskManager {
         return taskDAO.findUnassigned(limit);
     }
 
+    public Task seeTaskDetails(long taskId) throws SQLException {
+        return taskDAO.findById(taskId);
+    }
+
     /**
      * Assigns selected tasks to the ranger. If the ranger has 5 unfinished tasks, prints
      * error message and cancels the assignment.

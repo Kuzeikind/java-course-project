@@ -87,6 +87,7 @@ public abstract class BaseConsole {
             ));
         } catch (RuntimeException rte) {
             showBadInputMsg();
+            rte.printStackTrace();
         } catch (PasswordMismatchException pme) {
             System.out.println("Wrong password");
         } catch (SQLException sqe) {
@@ -101,9 +102,9 @@ public abstract class BaseConsole {
     }
 
     protected void seeMostRecent() {
-        List<Task> tasks = null;
 
         try {
+            List<Task> tasks = null;
             tasks = taskManager.seeMostRecent(activeUser);
             displayTasks(tasks);
         } catch (SQLException throwables) {
@@ -112,9 +113,9 @@ public abstract class BaseConsole {
     }
 
     protected void seeUrgent() {
-        List<Task> tasks = null;
 
         try {
+            List<Task> tasks = null;
             tasks = taskManager.seeUrgent(activeUser);
             displayTasks(tasks);
         } catch (SQLException throwables) {
@@ -123,9 +124,9 @@ public abstract class BaseConsole {
     }
 
     protected void seeFinished() {
-        List<Task> tasks = null;
 
         try {
+            List<Task> tasks = null;
             System.out.println("Enter a number of tasks to see:");
             long limit = Long.parseLong(scanner.next());
 
@@ -139,9 +140,9 @@ public abstract class BaseConsole {
     }
 
     protected void seeUnassigned() {
-        List<Task> tasks = null;
 
         try {
+            List<Task> tasks = null;
             System.out.println("Enter a number of tasks to see:");
             long limit = Long.parseLong(scanner.next());
 
@@ -154,7 +155,17 @@ public abstract class BaseConsole {
         }
     }
 
-    protected void seeTaskDetails() {}
+    protected void seeTaskDetails() {
+        //TODO implement proper formatting.
+        try {
+            System.out.println("Enter task ID:");
+            long taskId = Long.parseLong(scanner.next());
+            Task task = taskManager.seeTaskDetails(taskId);
+            System.out.println(task);
+        } catch(SQLException sqe) {
+            sqe.printStackTrace();
+        }
+    }
 
     protected void takeTask() {
         try {

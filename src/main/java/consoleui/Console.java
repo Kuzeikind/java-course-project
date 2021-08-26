@@ -20,6 +20,7 @@ public class Console extends BaseConsole {
         put("urgent", "Lists ranger's tasks, ones with the higher priority first.");
         put("unassigned", "Lists all tasks not assigned to any ranger.");
         put("finished", "Lists ranger's finished tasks.");
+        put("details", "Shows detailed information about the specified task.");
         put("take", "Assigns the specified task to the current ranger. Can only take unassigned tasks.");
         put("approve", "Marks the specified task as finished. Only rangers of rank LEAD can approve tasks.");
         put("exit", "Exits the application.");
@@ -50,6 +51,7 @@ public class Console extends BaseConsole {
                     case "urgent":
                     case "unassigned":
                     case "finished":
+                    case "details":
                     case "take":
                     case "approve":
                         showUnauthorizedMsg();
@@ -90,6 +92,9 @@ public class Console extends BaseConsole {
                     case "finished":
                         seeFinished();
                         break;
+                    case "details":
+                        seeTaskDetails();
+                        break;
                     case "take":
                         takeTask();
                         break;
@@ -122,7 +127,6 @@ public class Console extends BaseConsole {
 
     private void handleIllegalCmd() {
         System.out.println("Illegal command. Type help to see the list of available commands.");
-        showHelpMsg();
     }
 
     private void showGoodByeMsg() {

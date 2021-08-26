@@ -11,6 +11,7 @@ BaseConsole:
     - implement tasks formatting:
         - DONE multiple tasks basic info
         - single task detailed info
+    - implement rangers formatting
     - takeTask() method does not accept correct parameters
 
 RangerManager:

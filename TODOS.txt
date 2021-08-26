@@ -2,15 +2,25 @@ General:
     - handle exceptions with proper messages
 
 Console:
-    - implement help command
-    - prepare help message
-    - add interactive messages
+    - DONE implement help command
+    - DONE prepare help message
+    - DONE add interactive messages
+    - DONE bad input for scanner.nextLong() shows "Illegal command"
 
 BaseConsole:
-    - implement tasks formatting
+    - implement tasks formatting:
+        - DONE multiple tasks basic info
+        - single task detailed info
+    - takeTask() method does not accept correct parameters
 
 RangerManager:
     - logIn method in one transaction ???
+    - DONE logIn doesn't handle wrong user name
+
+TaskManager:
+    - when approving a task, check if it is assigned to a ranger
+    - approve() method creates an entry in HISTORY, but does not delete the task from TASK table
+    - when taking task, check if it is already assigned
 
 DAO:
     - implement proper mapping of Enum types:

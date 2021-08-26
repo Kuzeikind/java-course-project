@@ -25,7 +25,12 @@ public class RangerManager {
      * Logs in a ranger with an email and a password.
      */
     public Ranger logIn(String email, String password) throws SQLException {
-        Ranger user = rangerDAO.findByEmail(email);
+        Ranger user;
+        try {
+            user = rangerDAO.findByEmail(email);
+        } catch (SQLException sqe) {
+            throw new SQLException("User does not exit", sqe);
+        }
 
         String actualPwd = rangerDAO.getPasswordById(user.getId());
 

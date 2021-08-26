@@ -96,7 +96,7 @@ public class TaskDaoPostgres extends AbstractDAO<Task> implements TaskDAO {
         List<Task> out = null;
 
         String SQL = FIND_MANY_BY_RANGER_SQL +
-                "ORDER BY priority ";
+                "ORDER BY priority DESC";
 
         try (PreparedStatement stmt = conn.prepareStatement(SQL)) {
             stmt.setLong(1, rangerId);

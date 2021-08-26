@@ -5,6 +5,7 @@ import dao.domain.Ranger;
 import dao.domain.Task;
 import dao.enums.RangerRank;
 import exceptions.LowRankException;
+import exceptions.TaskAlreadyTakenException;
 import exceptions.TooManyTasksException;
 
 import java.sql.SQLException;
@@ -54,9 +55,14 @@ public class TaskManager {
      * error message and cancels the assignment.
      */
     public void takeTask(Ranger ranger, long taskId) throws SQLException {
+        if (taskDAO.findById(taskId).getAssignedTo() != 0) {
+            throw new TaskAlreadyTakenException("Task is already assigned to a ranger");
+        }
+
         if (seeMostRecent(ranger).size() == MAX_ACTIVE_TASKS) {
             throw new TooManyTasksException("Ranger already has too many tasks");
         }
+
         taskDAO.updateById(ranger.getId(), taskId);
     }
 

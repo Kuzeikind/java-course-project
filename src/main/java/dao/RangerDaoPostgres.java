@@ -22,7 +22,7 @@ public class RangerDaoPostgres extends AbstractDAO<Ranger> implements RangerDAO 
     }
 
     @Override
-    protected Ranger mapRow(ResultSet rs) {
+    protected Ranger mapRow(ResultSet rs) throws SQLException {
         long id = 0;
         String firstName = null;
         String lastName = null;
@@ -37,8 +37,8 @@ public class RangerDaoPostgres extends AbstractDAO<Ranger> implements RangerDAO 
             // TODO map enums properly.
             rank = RangerRank.values()[rs.getShort("rank") - 1];
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException sqe) {
+            throw new SQLException("Unable to map row", sqe);
         }
 
         Ranger ranger = new Ranger(

@@ -2,12 +2,28 @@ package consoleui;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Console extends BaseConsole {
 
     public Console() throws IOException, SQLException {
         super();
+        System.out.println("Type help to see the list of available commands.");
     }
+
+    private Map<String, String> COMMANDS = new HashMap<>() {{
+        put("help", "Lists available commands.");
+        put("login", "Authorizes a ranger.");
+        put("info", "Shows current ranger's personal info.");
+        put("recent", "Lists ranger's tasks, most recent ones first.");
+        put("urgent", "Lists ranger's tasks, ones with the higher priority first.");
+        put("unassigned", "Lists all tasks not assigned to any ranger.");
+        put("finished", "Lists ranger's finished tasks.");
+        put("take", "Assigns the specified task to the current ranger. Can only take unassigned tasks.");
+        put("approve", "Marks the specified task as finished. Only rangers of rank LEAD can approve tasks.");
+        put("exit", "Exits the application.");
+    }};
 
     /**
      * Event loop that listens for commands.
@@ -17,11 +33,18 @@ public class Console extends BaseConsole {
         UNAUTHORIZED:
         while (true) {
             try {
+                System.out.println("Enter your command:");
                 String cmd = readCmd();
                 switch (cmd) {
+                    case "help":
+                        showHelpMsg();
+                        break;
                     case "login": //TODO unsuccessful login.
-                        logIn();
-                        break UNAUTHORIZED;
+                        if (logIn()) {
+                            break UNAUTHORIZED;
+                        } else {
+                            break;
+                        }
                     case "info":
                     case "recent":
                     case "urgent":
@@ -98,7 +121,7 @@ public class Console extends BaseConsole {
     }
 
     private void handleIllegalCmd() {
-        System.out.println("Illegal cmd");
+        System.out.println("Illegal command. Type help to see the list of available commands.");
         showHelpMsg();
     }
 
@@ -107,7 +130,9 @@ public class Console extends BaseConsole {
     }
 
     private void showHelpMsg() {
-
+        System.out.println("List of available commands:");
+        COMMANDS.entrySet().stream()
+                .forEach(e -> System.out.printf("%s : %s\n", e.getKey(), e.getValue()));
     }
 
 }

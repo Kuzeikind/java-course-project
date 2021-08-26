@@ -38,7 +38,7 @@ INSERT INTO ranger (first_name, last_name, email, rank) VALUES
     ('Ivan', 'Petrov', 'evanpetrov@mail.ru', 1),
     ('John', 'Smith', 'johnsmith@yahoo.com', 2),
     ('Jane', 'Doe', 'janedoe@gmail.com', 3),
-    ('Cordell', 'Walker', 'cordellwalker@gmial.com', 4);
+    ('Cordell', 'Walker', 'cordellwalker@gmail.com', 4);
 
 INSERT INTO ranger_passwords (password) VALUES
     ('password1'),

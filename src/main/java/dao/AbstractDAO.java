@@ -87,11 +87,13 @@ public abstract class AbstractDAO<T extends AbstractEntity> {
 //        throw new RuntimeException("Update method not implemented");
 //    }
 
-    public void deleteById(long id) throws SQLException {
+    public int deleteById(long id) throws SQLException {
+        int out;
         try (PreparedStatement stmt = conn.prepareStatement(getDELETE_BY_ID_SQL())) {
             stmt.setLong(1, id);
-            stmt.executeUpdate();
+            out = stmt.executeUpdate();
         }
+        return out;
     }
 
 }

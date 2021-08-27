@@ -1,0 +1,8 @@
+RangerManger
+
+ ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
+
+- logIn:
+    - with invalid `email` param and any `password` param should throw SQLException
+    - with valid `email` param and invalid `password` param shoud throw PasswordMismatchException
+    - with valid `email` and valid `password` should return a Ranger object

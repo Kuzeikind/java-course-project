@@ -21,8 +21,8 @@ public interface TaskDAO {
 
     void updateById(long taskId, long rangerId) throws SQLException;
 
-    void deleteById(long taskId) throws SQLException;
+    int deleteById(long taskId) throws SQLException;
 
-    void moveToHistoryById(long taskId) throws SQLException;
+    int moveToHistoryById(long taskId) throws SQLException;
 
 }

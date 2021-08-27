@@ -1,9 +1,8 @@
 package dao;
 
 import dao.domain.Task;
-import dao.enums.TaskPriority;
-import dao.enums.TaskType;
-import exceptions.NotImplementedException;
+import dao.domain.enums.TaskPriority;
+import dao.domain.enums.TaskType;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -83,7 +82,6 @@ public class TaskDaoPostgres extends AbstractDAO<Task> implements TaskDAO {
                 longitude,
                 createdAt
         );
-
         return task;
     }
 
@@ -97,9 +95,7 @@ public class TaskDaoPostgres extends AbstractDAO<Task> implements TaskDAO {
             stmt.setLong(1, rangerId);
 
             out = findMany(stmt);
-
         }
-
         return out;
     }
 
@@ -113,9 +109,7 @@ public class TaskDaoPostgres extends AbstractDAO<Task> implements TaskDAO {
             stmt.setLong(1, rangerId);
 
             out = findMany(stmt);
-
         }
-
         return out;
     }
 
@@ -127,9 +121,7 @@ public class TaskDaoPostgres extends AbstractDAO<Task> implements TaskDAO {
             stmt.setLong(2, limit);
 
             out = findMany(stmt);
-
         }
-
         return out;
     }
 
@@ -144,9 +136,7 @@ public class TaskDaoPostgres extends AbstractDAO<Task> implements TaskDAO {
             stmt.setLong(1, limit);
 
             out = findMany(stmt);
-
         }
-
         return out;
     }
 
@@ -156,17 +146,17 @@ public class TaskDaoPostgres extends AbstractDAO<Task> implements TaskDAO {
             stmt.setLong(2, rangerId);
 
             stmt.executeUpdate();
-
         }
     }
 
-    public void moveToHistoryById(long taskId) throws SQLException {
+    public int moveToHistoryById(long taskId) throws SQLException {
         try (PreparedStatement stmt = conn.prepareStatement(MOVE_TO_HISTORY_BY_ID_SQL)) {
             stmt.setLong(1, taskId);
             // TODO execute int one transaction.
             stmt.executeUpdate();
         }
-        deleteById(taskId);
+        int out = deleteById(taskId);
+        return out;
     }
 
 }

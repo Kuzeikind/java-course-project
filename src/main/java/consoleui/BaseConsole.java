@@ -163,7 +163,8 @@ public abstract class BaseConsole {
             Task task = taskManager.seeTaskDetails(taskId);
             System.out.println(task);
         } catch(SQLException sqe) {
-            sqe.printStackTrace();
+            System.out.println("Task does not exist");
+//            sqe.printStackTrace();
         }
     }
 
@@ -177,7 +178,8 @@ public abstract class BaseConsole {
         } catch(TaskAlreadyTakenException | TooManyTasksException ble) {
             System.out.println(ble.getMessage());
         } catch (SQLException sqe) {
-            sqe.printStackTrace();
+            System.out.println("Task does not exist");
+//            sqe.printStackTrace();
         }
     }
 
@@ -192,7 +194,8 @@ public abstract class BaseConsole {
         } catch(LowRankException lre) {
             System.out.println(lre.getMessage());;
         } catch (SQLException sqe) {
-            sqe.printStackTrace();
+            System.out.println("Task does not exist");
+//            sqe.printStackTrace();
         }
     }
 

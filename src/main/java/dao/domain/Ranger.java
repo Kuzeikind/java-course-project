@@ -1,6 +1,6 @@
 package dao.domain;
 
-import dao.enums.RangerRank;
+import dao.domain.enums.RangerRank;
 
 public class Ranger extends AbstractEntity {
 

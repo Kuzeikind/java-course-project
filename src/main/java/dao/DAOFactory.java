@@ -15,7 +15,7 @@ public class DAOFactory {
     private final String DATABASE;
 
     private Properties loadProperties() throws IOException {
-        FileInputStream fin = new FileInputStream("ranger.properties");
+        FileInputStream fin = new FileInputStream("src/main/resources/ranger.properties");
         Properties settings = new Properties();
         settings.load(fin);
         return settings;

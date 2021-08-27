@@ -1,4 +1,4 @@
-package dao.enums;
+package dao.domain.enums;
 
 public enum RangerRank {
     JUNIOR,

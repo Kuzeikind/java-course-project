@@ -20,6 +20,7 @@ RangerManager:
 
 TaskManager:
     - when approving a task, check if it is assigned to a ranger
+    - show error message when trying to approve non-existent task
     - DONE approve() method creates an entry in HISTORY, but does not delete the task from TASK table
     - DONE when taking task, check if it is already assigned
 

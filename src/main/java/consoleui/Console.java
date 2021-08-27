@@ -29,7 +29,7 @@ public class Console extends BaseConsole {
     /**
      * Event loop that listens for commands.
      */
-    public void listen() {
+    public void dialog() {
         // Unauthorized loop.
         UNAUTHORIZED:
         while (true) {

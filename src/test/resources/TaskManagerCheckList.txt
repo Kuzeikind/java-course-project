@@ -1,0 +1,38 @@
+TaskManager:
+
+ ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
+
+- Genereal:
+    - with invalid `taskId` param should throw SQLException
+    - with `limit` = 0 should throw SQLException
+
+ ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
+
+- seeRecent:
+    - for rangers that do not have any tasks should return an empty list
+
+- seeUrgent:
+    - for rangers that do not have any tasks should return an empty list
+
+- seeFinished:
+    - at first no rangers have finished tasks, so it should return an empty list
+    - check for `limit` values smaller than the actual # of unassigned tasks
+
+- seeUnassigned:
+    - check for `limit` values smaller than the actual # of unassigned tasks
+
+- seeDetails:
+    - valid `taskId` param
+
+- takeTask:
+    - try to take an assigned task
+    - try to take a task when having taken MAX_TASKS number of tasks
+
+- approve:
+    - try to approve an unassigned task
+    - try to approve a task wit insufficient rank
+
+ ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ==== ====
+
+- Questionable:
+    - invalid `ranger` param

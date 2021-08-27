@@ -1,7 +1,7 @@
 package dao;
 
 import dao.domain.Ranger;
-import dao.enums.RangerRank;
+import dao.domain.enums.RangerRank;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

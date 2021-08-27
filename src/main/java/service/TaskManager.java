@@ -3,9 +3,10 @@ package service;
 import dao.TaskDAO;
 import dao.domain.Ranger;
 import dao.domain.Task;
-import dao.enums.RangerRank;
+import dao.domain.enums.RangerRank;
 import exceptions.LowRankException;
 import exceptions.TaskAlreadyTakenException;
+import exceptions.TaskNotAssignedException;
 import exceptions.TooManyTasksException;
 
 import java.sql.SQLException;
@@ -22,34 +23,37 @@ public class TaskManager {
 
 
     /**
-     * Prints ranger's tasks, showing most recently created tasks first.
+     * Returns a list of ranger's tasks, showing most recently created tasks first.
      */
     public List<Task> seeMostRecent(Ranger ranger) throws SQLException {
         return taskDAO.findRecent(ranger.getId());
     }
 
     /**
-     * Prints ranger's tasks, showing those with the highest priority first.
+     * Returns a list of ranger's tasks, showing those with the highest priority first.
      */
     public List<Task> seeUrgent(Ranger ranger) throws SQLException {
         return taskDAO.findUrgent(ranger.getId());
     }
 
     /**
-     * Prints ranger's finished tasks.
+     * Returns a list of ranger's finished tasks.
      */
     public List<Task> seeFinished(Ranger ranger, long limit) throws SQLException {
         return taskDAO.findFinished(ranger.getId(), limit);
     }
 
     /**
-     * Prints unassigned tasks, so that ranger can pick one.
+     * Returns a list of unassigned tasks, so that ranger can pick one.
      * By default shows tasks with higher priority first.
      */
     public List<Task> seeUnassigned(long limit) throws SQLException {
         return taskDAO.findUnassigned(limit);
     }
 
+    /**
+     * Returns a task.
+     */
     public Task seeTaskDetails(long taskId) throws SQLException {
         return taskDAO.findById(taskId);
     }
@@ -79,7 +83,13 @@ public class TaskManager {
         if (ranger.getRangerRank() != RangerRank.LEAD) {
             throw new LowRankException("Only rangers with rank LEAD can approve tasks");
         }
+
+        if (taskDAO.findById(taskId).getAssignedTo() == 0) {
+            throw new TaskNotAssignedException("Cannot approve unassigned tasks");
+        }
+
         taskDAO.moveToHistoryById(taskId);
+
     }
 
 }

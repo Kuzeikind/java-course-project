@@ -1,7 +1,7 @@
 package dao.domain;
 
-import dao.enums.TaskPriority;
-import dao.enums.TaskType;
+import dao.domain.enums.TaskPriority;
+import dao.domain.enums.TaskType;
 
 import java.time.LocalDateTime;
 

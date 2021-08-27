@@ -10,7 +10,7 @@ public class Main {
         Console console = null;
         try {
             console = new Console();
-            console.listen();
+            console.dialog();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

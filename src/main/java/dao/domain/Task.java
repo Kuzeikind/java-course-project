@@ -16,6 +16,8 @@ public class Task extends AbstractEntity {
     private double longitude;
     private LocalDateTime createdAt;
 
+    public Task(){}
+
     public Task(long id, long assignedTo, TaskType type, TaskPriority priority,
                 String description, double latitude, double longitude, LocalDateTime createdAt) {
         this.id = id;

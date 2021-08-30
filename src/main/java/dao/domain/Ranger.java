@@ -2,6 +2,8 @@ package dao.domain;
 
 import dao.domain.enums.RangerRank;
 
+import java.util.Objects;
+
 public class Ranger extends AbstractEntity {
 
     private long id;
@@ -9,6 +11,8 @@ public class Ranger extends AbstractEntity {
     private String lastName;
     private String email;
     private RangerRank rank;
+
+    public Ranger(){}
 
     public Ranger(long id, String firstName, String lastName, String email, RangerRank rank) {
         this.id = id;
@@ -68,6 +72,19 @@ public class Ranger extends AbstractEntity {
                 ", email='" + email + '\'' +
                 ", rank=" + rank +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ranger ranger = (Ranger) o;
+        return id == ranger.id && firstName.equals(ranger.firstName) && lastName.equals(ranger.lastName) && email.equals(ranger.email) && rank == ranger.rank;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }
 

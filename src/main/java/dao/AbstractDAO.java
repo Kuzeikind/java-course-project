@@ -2,7 +2,6 @@ package dao;
 
 import dao.domain.AbstractEntity;
 import exceptions.NotImplementedException;
-import jdk.jshell.spi.ExecutionControl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,15 +22,15 @@ public abstract class AbstractDAO<T extends AbstractEntity> {
 //    private String FIND_BY_ID_SQL = null;
 //    private String DELETE_BY_ID_SQL = null;
 
-    public String getCREATE_SQL() {
+    public String getCreateSql() {
         throw new NotImplementedException("Method must be overridden");
     }
 
-    public String getFIND_BY_ID_SQL() {
+    public String getFindByIdSql() {
         throw new NotImplementedException("Method must be overridden");
     }
 
-    public String getDELETE_BY_ID_SQL() {
+    public String getDeleteByIdSql() {
         throw new NotImplementedException("Method must be overridden");
     }
 
@@ -54,7 +53,7 @@ public abstract class AbstractDAO<T extends AbstractEntity> {
     }
 
     public void create(T t) throws SQLException {
-        try (PreparedStatement stmt = conn.prepareStatement(getCREATE_SQL())) {
+        try (PreparedStatement stmt = conn.prepareStatement(getCreateSql())) {
             stmt.executeUpdate();
         }
     }
@@ -62,7 +61,7 @@ public abstract class AbstractDAO<T extends AbstractEntity> {
     public T findById(long id) throws SQLException {
         T out = null;
 
-        try (PreparedStatement stmt = conn.prepareStatement(getFIND_BY_ID_SQL())) {
+        try (PreparedStatement stmt = conn.prepareStatement(getFindByIdSql())) {
             stmt.setLong(1, id);
             ResultSet rs = stmt.executeQuery();
             rs.next();
@@ -89,7 +88,7 @@ public abstract class AbstractDAO<T extends AbstractEntity> {
 
     public int deleteById(long id) throws SQLException {
         int out;
-        try (PreparedStatement stmt = conn.prepareStatement(getDELETE_BY_ID_SQL())) {
+        try (PreparedStatement stmt = conn.prepareStatement(getDeleteByIdSql())) {
             stmt.setLong(1, id);
             out = stmt.executeUpdate();
         }

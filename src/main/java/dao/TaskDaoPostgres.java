@@ -34,12 +34,12 @@ public class TaskDaoPostgres extends AbstractDAO<Task> implements TaskDAO {
             "WHERE id = ? ";
 
     @Override
-    public String getDELETE_BY_ID_SQL() {
+    public String getDeleteByIdSql() {
         return DELETE_BY_ID_SQL;
     }
 
     @Override
-    public String getFIND_BY_ID_SQL() {
+    public String getFindByIdSql() {
         return FIND_BY_ID_SQL;
     }
 

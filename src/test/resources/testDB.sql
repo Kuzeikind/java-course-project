@@ -92,19 +92,19 @@ CREATE TABLE task (
 );
 
 INSERT INTO task (assigned_to, priority, type, description, latitude, longitude, created_at) VALUES
-    (3,    4, 1, 'Plant some flowers FAST!!!'              , 30.31, 59.95, current_timestamp - '1 mon'::interval),
-    (3,    3, 2, 'Birch grove requires anti-insect care'   , 30.31, 59.95, current_timestamp - '3 days'::interval),
-    (3,    1, 3, 'Xmass tree decoration should be started' , 30.31, 59.95, current_timestamp - '3 years'::interval),
-    (3,    3, 1, 'Plant some cucumbers'                    , 30.31, 59.95, current_timestamp - '20 days'::interval),
-    (3,    2, 3, 'And then decorate your cucumbers'        , 30.31, 59.95, current_timestamp - '19 days'::interval),
-    (4,    1, 3, 'Decorate whatever you want'              , 30.31, 59.95, current_timestamp - '2 years'::interval),
-    (4,    3, 3, 'Do some bansay'                          , 30.31, 59.95, current_timestamp - '10 days'::interval),
-    (2,    1, 4, 'Illegal weeds must be destroyed'         , 30.31, 59.95, current_timestamp - '20 years'::interval),
-    (2,    1, 4, 'Another task for ranger #2'              , 30.31, 59.95, current_timestamp - '5 days'::interval),
-    (NULL, 3, 1, 'Another task for the planter'            , 30.31, 59.95, current_timestamp - '10 mons'::interval),
-    (NULL, 3, 1, 'Plant some x-mass trees'                 , 30.31, 59.95, current_timestamp - '3 days'::interval),
-    (NULL, 2, 2, 'Backyard lawn requires repairment'       , 30.31, 59.95, current_timestamp - '15 days'::interval),
-    (NULL, 4, 2, 'A tree broken by a hurricane'            , 30.31, 59.95, current_timestamp - '16 days'::interval)
+    (3,    4, 1, 'Plant some flowers FAST!!!'              , 30.31, 59.95, '2021-07-31T14:46:02.151337'),
+    (3,    3, 2, 'Birch grove requires anti-insect care'   , 30.31, 59.95, '2021-08-28T14:46:02.151337'),
+    (3,    1, 3, 'Xmass tree decoration should be started' , 30.31, 59.95, '2018-08-31T14:46:02.151337'),
+    (3,    3, 1, 'Plant some cucumbers'                    , 30.31, 59.95, '2021-08-11T14:46:02.151337'),
+    (3,    2, 3, 'And then decorate your cucumbers'        , 30.31, 59.95, '2021-08-12T14:46:02.151337'),
+    (4,    1, 3, 'Decorate whatever you want'              , 30.31, 59.95, '2019-08-31T14:46:02.151337'),
+    (4,    3, 3, 'Do some bansay'                          , 30.31, 59.95, '2021-08-21T14:46:02.151337'),
+    (2,    1, 4, 'Illegal weeds must be destroyed'         , 30.31, 59.95, '2001-08-31T14:46:02.151337'),
+    (2,    1, 4, 'Another task for ranger #2'              , 30.31, 59.95, '2021-08-26T14:46:02.151337'),
+    (NULL, 3, 1, 'Another task for the planter'            , 30.31, 59.95, '2020-10-31T14:46:02.151337'),
+    (NULL, 3, 1, 'Plant some x-mass trees'                 , 30.31, 59.95, '2021-08-28T14:46:02.151337'),
+    (NULL, 2, 2, 'Backyard lawn requires repairment'       , 30.31, 59.95, '2021-08-16T14:46:02.151337'),
+    (NULL, 4, 2, 'A tree broken by a hurricane'            , 30.31, 59.95, '2021-08-15T14:46:02.151337')
 ;
 
 DROP TABLE IF EXISTS history;
@@ -118,5 +118,10 @@ CREATE TABLE history (
 	longitude double precision,
 	created_at timestamp
 );
+
+INSERT INTO history VALUES
+    (14, 1, 2, 2, 'A finished task'                  , 30.31, 59.95, '2015-05-16T14:46:02.151337'),
+    (15, 1, 4, 2, 'Another finished task'            , 30.31, 59.95, '2014-08-15T14:46:02.151337')
+;
 
 

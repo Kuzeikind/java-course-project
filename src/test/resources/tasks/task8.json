@@ -1,1 +1,1 @@
-{"id":8,"assignedTo":2,"type":"REMOVE","priority":"LOW","description":"Illegal weeds must be destroyed","latitude":30.31,"longitude":59.95,"createdAt":{"year":2001,"monthValue":8,"dayOfMonth":30,"hour":18,"minute":11,"second":6,"nano":676188000,"dayOfWeek":"THURSDAY","dayOfYear":242,"month":"AUGUST","chronology":{"id":"ISO","calendarType":"iso8601"}}}
+{"id":8,"assignedTo":2,"type":"REMOVE","priority":"LOW","description":"Illegal weeds must be destroyed","latitude":30.31,"longitude":59.95,"createdAt":"2001-08-31T14:46:02.151337"}

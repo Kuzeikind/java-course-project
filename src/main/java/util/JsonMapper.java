@@ -1,17 +1,15 @@
 package util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import dao.domain.Ranger;
 import dao.domain.Task;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.nio.file.Path;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Properties;
 
 public class JsonMapper {
@@ -29,8 +27,14 @@ public class JsonMapper {
     private static String PORT;
     private static String DATABASE;
 
-    private static String TASKS_SQL = "SELECT * FROM task";
+    private static String TASKS_SQL = "SELECT * FROM task " +
+            "UNION " +
+            "SELECT * FROM history";
     private static String RANGERS_SQL = "SELECT * FROM ranger";
+
+    private static String tasksPath = "src/test/resources/tasks/";
+    private static String rangersPath = "src/test/resources/rangers/";
+    private static ObjectMapper mapper = new ObjectMapper();
 
     static {
         try {
@@ -46,14 +50,15 @@ public class JsonMapper {
                             + HOST_NAME + ":" + PORT + "/"
                             + DATABASE
             );
+
+            // Config the mapper.
+            mapper.registerModule(new JavaTimeModule());
+            mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+
         } catch(Exception e) {
             e.printStackTrace();
         }
     }
-
-    private static String tasksPath = "src/test/resources/tasks/";
-    private static String rangersPath = "src/test/resources/rangers/";
-    private static ObjectMapper mapper = new ObjectMapper();
 
     public static void writeAll() {
         try(Statement stmt = connection.createStatement()){

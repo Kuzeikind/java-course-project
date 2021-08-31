@@ -1,1 +1,1 @@
-{"id":6,"assignedTo":4,"type":"DECORATE","priority":"LOW","description":"Decorate whatever you want","latitude":30.31,"longitude":59.95,"createdAt":{"year":2019,"monthValue":8,"dayOfMonth":30,"hour":18,"minute":11,"second":6,"nano":676188000,"dayOfWeek":"FRIDAY","dayOfYear":242,"month":"AUGUST","chronology":{"id":"ISO","calendarType":"iso8601"}}}
+{"id":6,"assignedTo":4,"type":"DECORATE","priority":"LOW","description":"Decorate whatever you want","latitude":30.31,"longitude":59.95,"createdAt":"2019-08-31T14:46:02.151337"}

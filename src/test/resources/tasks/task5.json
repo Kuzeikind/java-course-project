@@ -1,1 +1,1 @@
-{"id":5,"assignedTo":3,"type":"DECORATE","priority":"MEDIUM","description":"And then decorate your cucumbers","latitude":30.31,"longitude":59.95,"createdAt":{"year":2021,"monthValue":8,"dayOfMonth":11,"hour":18,"minute":11,"second":6,"nano":676188000,"dayOfWeek":"WEDNESDAY","dayOfYear":223,"month":"AUGUST","chronology":{"id":"ISO","calendarType":"iso8601"}}}
+{"id":5,"assignedTo":3,"type":"DECORATE","priority":"MEDIUM","description":"And then decorate your cucumbers","latitude":30.31,"longitude":59.95,"createdAt":"2021-08-12T14:46:02.151337"}

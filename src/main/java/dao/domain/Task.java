@@ -1,9 +1,12 @@
 package dao.domain;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import dao.domain.enums.TaskPriority;
 import dao.domain.enums.TaskType;
+import util.DateTimeDeserializer;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Task extends AbstractEntity {
 
@@ -14,6 +17,7 @@ public class Task extends AbstractEntity {
     private String description;
     private double latitude;
     private double longitude;
+    @JsonDeserialize(using = DateTimeDeserializer.class)
     private LocalDateTime createdAt;
 
     public Task(){}
@@ -107,6 +111,25 @@ public class Task extends AbstractEntity {
                 ", longitude=" + longitude +
                 ", createdAt=" + createdAt +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return id == task.id && assignedTo == task.assignedTo
+                && Double.compare(task.latitude, latitude) == 0
+                && Double.compare(task.longitude, longitude) == 0
+                && type == task.type
+                && priority == task.priority
+                && Objects.equals(description, task.description)
+                && Objects.equals(createdAt, task.createdAt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, assignedTo, type, priority, description, latitude, longitude, createdAt);
     }
 }
 

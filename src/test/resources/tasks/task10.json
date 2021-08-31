@@ -1,1 +1,1 @@
-{"id":10,"assignedTo":0,"type":"PLANT","priority":"HIGH","description":"Another task for the planter","latitude":30.31,"longitude":59.95,"createdAt":{"year":2020,"monthValue":10,"dayOfMonth":30,"hour":18,"minute":11,"second":6,"nano":676188000,"dayOfWeek":"FRIDAY","dayOfYear":304,"month":"OCTOBER","chronology":{"id":"ISO","calendarType":"iso8601"}}}
+{"id":10,"assignedTo":0,"type":"PLANT","priority":"HIGH","description":"Another task for the planter","latitude":30.31,"longitude":59.95,"createdAt":"2020-10-31T14:46:02.151337"}

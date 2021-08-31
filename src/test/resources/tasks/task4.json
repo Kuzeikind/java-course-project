@@ -1,1 +1,1 @@
-{"id":4,"assignedTo":3,"type":"PLANT","priority":"HIGH","description":"Plant some cucumbers","latitude":30.31,"longitude":59.95,"createdAt":{"year":2021,"monthValue":8,"dayOfMonth":10,"hour":18,"minute":11,"second":6,"nano":676188000,"dayOfWeek":"TUESDAY","dayOfYear":222,"month":"AUGUST","chronology":{"id":"ISO","calendarType":"iso8601"}}}
+{"id":4,"assignedTo":3,"type":"PLANT","priority":"HIGH","description":"Plant some cucumbers","latitude":30.31,"longitude":59.95,"createdAt":"2021-08-11T14:46:02.151337"}
